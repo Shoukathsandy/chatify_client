@@ -2,7 +2,7 @@ import axios from "axios";
 import { getUserFromLocalStorage } from "./localStorage";
 
 const api = axios.create({
-  baseURL: "https://chatify-f9gy.onrender.com",
+  baseURL: process.env.REACT_APP_API,
 });
 
 api.interceptors.request.use((config) => {
@@ -11,7 +11,6 @@ api.interceptors.request.use((config) => {
     config.headers.common["Authorization"] = `Bearer ${user.token}`;
   }
   return config;
-  
 });
 
 export default api;
